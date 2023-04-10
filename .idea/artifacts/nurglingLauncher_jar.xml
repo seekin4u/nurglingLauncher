@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="nurglingLauncher:jar">
+    <output-path>$PROJECT_DIR$/.</output-path>
+    <root id="archive" name="nurglingLauncher.jar">
+      <element id="module-output" name="nurglingLauncher" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-io-2.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-io-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-codec-1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jgoodies-forms-1.8.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
