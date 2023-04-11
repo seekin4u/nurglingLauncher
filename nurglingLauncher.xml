@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+
+<project name="nurglingLauncher" default="release">
+
+    <target name="build">
+        <mkdir dir="build" />
+        <mkdir dir="build/classes" />
+        <javac srcdir="src" destdir="build/classes" debug="on"
+               source="1.8" target="1.8" includeantruntime="no">
+    <classpath>
+        <pathelement path="lib/commons-io-2.7.jar" />
+        <pathelement path="lib/jgoodies-forms-1.8.0.jar" />
+        <pathelement path="lib/commons-codec-1.14.jar" />
+    </classpath>
+        </javac>
+
+    </target>
+
+    <path id="build.classpath">
+        <fileset dir="${basedir}">
+            <include name="lib/*.jar"/>
+        </fileset>
+    </path>
+
+    <pathconvert property="manifest.classpath" pathsep=" ">
+        <path refid="build.classpath"/>
+        <mapper>
+            <chainedmapper>
+                <flattenmapper/>
+                <globmapper from="*.jar" to="lib/*.jar"/>
+            </chainedmapper>
+        </mapper>
+    </pathconvert>
+
+    <target name = "release" depends="build">
+        <jar jarfile="out/nurgling_launcher.jar">
+            <fileset dir="build/classes" />
+            <zipfileset includes="**/*.class" src="lib/commons-codec-1.14.jar"/>
+            <zipfileset includes="**/*.class" src="lib/commons-io-2.7.jar"/>
+            <zipfileset includes="**/*.class" src="lib/jgoodies-forms-1.8.0.jar"/>
+            <manifest>
+                <attribute name="Main-Class" value="ape.Updater" />
+                <attribute name="Class-Path" value="${manifest.classpath}"/>
+            </manifest>
+        </jar>
+        <chmod file="out/nurgling_launcher.jar" perm="a+x" />
+    </target>
+</project>

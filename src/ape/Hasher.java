@@ -10,10 +10,7 @@ import java.util.Iterator;
 public class Hasher {
     private class Filter implements org.apache.commons.io.filefilter.IOFileFilter {
         public boolean accept(File f) {
-            if (!f.getName().equals("ver") && !f.getName().equals("hafen-updater.jar"))
-                return true;
-            else
-                return false;
+            return !f.getName().equals("ver") && !f.getName().equals("hafen-updater.jar") && !f.getName().contains(".git");
         }
 
         public boolean accept(File dir, String name) {
